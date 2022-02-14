@@ -1,0 +1,27 @@
+public class Solution {
+    public int RemoveDuplicates(int[] nums) 
+    {
+        if(nums.Length == 0)
+        {
+            return 0;
+        }
+        int uniquePtr = 0;
+        int dupPtr = 0;
+        
+        while(dupPtr < nums.Length-1)
+        {
+            if(nums[dupPtr] != nums[dupPtr + 1])
+            {
+                nums[uniquePtr + 1] = nums[dupPtr + 1];
+                dupPtr++;
+                uniquePtr++;
+            }
+            else
+            {
+                dupPtr++;
+            }
+        }
+        
+        return uniquePtr + 1;
+    }
+}

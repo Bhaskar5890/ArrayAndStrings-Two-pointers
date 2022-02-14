@@ -1,0 +1,23 @@
+public class Solution {
+    public bool IsSubsequence(string s, string t) 
+    {
+        if(s.Length == 0 && t.Length == 0)
+        {
+            return true;
+        }
+        
+        var ptr1 = 0;
+        var ptr2 = 0;
+        
+        while(ptr1 < s.Length && ptr2 < t.Length)
+        {
+            if(s[ptr1] == t[ptr2])
+            {
+                ptr1++;
+            }
+            ptr2++;
+        }
+        
+        return ptr1 == s.Length;
+    }
+}

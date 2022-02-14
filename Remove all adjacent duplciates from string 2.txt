@@ -1,0 +1,35 @@
+public class Solution {
+    public string RemoveDuplicates(string s, int k) 
+    {
+        Stack<(char, int)> stack = new Stack<(char, int)>();
+        
+        foreach(var c in s)
+        {
+            if(stack.Count > 0 && stack.Peek().Item1 == c)
+            {
+                var top = stack.Peek();
+                top.Item2++;
+                stack.Pop();
+                stack.Push((top.Item1, top.Item2));
+                if(top.Item2 >= k)
+                {
+                    stack.Pop();
+                }
+            }
+            else
+            {
+                stack.Push((c, 1));
+            }
+        }
+        
+        var sb = new StringBuilder();
+        while(stack.Count > 0)
+        {
+            sb.Append(string.Concat(Enumerable.Repeat(stack.Peek().Item1, stack.Peek().Item2)));
+            stack.Pop();
+        }
+        
+        var res = new String(sb.ToString().Reverse().ToArray());
+        return res;
+    }
+}

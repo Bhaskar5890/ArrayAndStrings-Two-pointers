@@ -1,0 +1,28 @@
+public class Solution {
+    public int[][] IntervalIntersection(int[][] A, int[][] B) 
+    {
+        IList<int[]> list = new List<int[]>();
+        int i = 0;
+        int j = 0;
+        while(i < A.Length && j < B.Length)
+        {
+            if(A[i][1] <= B[j][1])
+            {
+                if(A[i][1] >= B[j][0])
+                {
+                    list.Add(new int[]{Math.Max(B[j][0], A[i][0]) , A[i][1]});
+                }
+                i++;
+            }
+            else
+            {
+                if(B[j][1] >= A[i][0])
+                {
+                    list.Add(new int[]{Math.Max(A[i][0], B[j][0]) , B[j][1]});
+                }
+                j++;
+            }
+        }
+        return list.ToArray();
+    }
+}

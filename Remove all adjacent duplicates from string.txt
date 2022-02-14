@@ -1,0 +1,21 @@
+public class Solution {
+    public string RemoveDuplicates(string s) 
+    {
+        var charArr = new char[s.Length];
+        int i = 0;
+        for(int a = 0; a < s.Length; a++)
+        {
+            if(i > 0 && charArr[i-1] == s[a])
+            {
+                i--;
+            }
+            else
+            {
+                charArr[i] = s[a];
+                i++;
+            }
+        }
+        
+        return new String(charArr, 0, i);
+    }
+}
